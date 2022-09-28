@@ -1,0 +1,29 @@
+.auth {
+  margin: 10px;
+  min-width: 350px;
+}
+
+.auth ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+}
+
+.auth form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth label {
+  display: contents;
+  margin: 5px 5px 5px 0;
+}
+
+.auth label input {
+  margin: 5px;
+}
+
+.auth button {
+  width: fit-content;
+  align-self: center;
+}

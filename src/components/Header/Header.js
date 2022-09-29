@@ -11,7 +11,7 @@ export default function Header() {
     [name] = user.email.split('@');
   } 
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     signOut();
     setUser(null);
   };
@@ -22,7 +22,7 @@ export default function Header() {
       {user && (
         <div>
           <span>Whats good {name}</span>
-          <button onClick={(e) => handleClick(e)}>log out</button>
+          <button onClick={handleClick}>log out</button>
         </div>
       )}
     </header>

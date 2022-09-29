@@ -31,8 +31,14 @@
 }
 
 .removeTodo {
-  position: relative;
-  top: 2px;
-  right: 2px;
-  width: 10px; 
+  margin: 0 10px;
+  width: fit-content; 
+  text-align: center;
+}
+
+.opaque {
+  opacity: .3;
+  margin: 0 10px;
+  width: fit-content; 
+  text-align: center;
 }

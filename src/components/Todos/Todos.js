@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import { useTodos } from '../../hooks/useTodos';
-import { createTodo } from '../../services/todo';
+import { createTodo, updateTodo } from '../../services/todo';
 import './Todos.css';
 
 export default function Todos() {
@@ -13,6 +13,8 @@ export default function Todos() {
     return <Redirect to='/auth/sign-in' />;
   }
 
+  console.log('todos: ', todos);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -20,12 +22,19 @@ export default function Todos() {
     
     const newTodo = await createTodo(desc);
     setTodos(prevState => [...newTodo, ...prevState]);
-    
+
     e.target.reset();
   };
 
   const handleRemove = () => {
-    console.log('remove this todo');
+    //pass
+  };
+
+  const handleUpdate = async (todo) => {
+    let update = await updateTodo(todo);
+    setTodos(prevState => prevState.map(
+      (prevTodo) => (prevTodo.id === todo.id ? update : prevTodo)
+    ));
   };
 
   return (
@@ -41,12 +50,13 @@ export default function Todos() {
       <ul className='todos'>
         {todos.map(todo => (
           <li key={todo.id}>
-            <input type='checkbox'></input>
+            <input type='checkbox' checked={todo.complete} onChange={() => handleUpdate(todo)}/>
             <span>{todo.description}</span>
-            {todo.completed ? 
+            {todo.complete ? 
               <button className='removeTodo' onClick={handleRemove}>
               x
-              </button> : <></>}
+              </button> : 
+              <button className='opaque'>x</button>}
           </li>
         ))}
       </ul>

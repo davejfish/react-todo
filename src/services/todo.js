@@ -14,3 +14,12 @@ export async function createTodo(description) {
     .order('id', { ascending: true });
   return checkError(response);
 }
+
+export async function updateTodo({ id, complete }) {
+  const response = await client
+    .from('todos')
+    .update({ complete: !complete })
+    .match({ id })
+    .single();
+  return checkError(response);
+}

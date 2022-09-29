@@ -24,8 +24,12 @@ export default function Todos() {
     e.target.reset();
   };
 
+  const handleRemove = () => {
+    console.log('remove this todo');
+  };
+
   return (
-    <div>
+    <div className='container'>
       <h2>add a todo</h2>
       <form onSubmit={(e) => handleSubmit(e)}>
         <label>
@@ -34,10 +38,15 @@ export default function Todos() {
         </label>
         <button>submit</button>
       </form>
-      <ul>
+      <ul className='todos'>
         {todos.map(todo => (
           <li key={todo.id}>
+            <input type='checkbox'></input>
             <span>{todo.description}</span>
+            {todo.completed ? 
+              <button className='removeTodo' onClick={handleRemove}>
+              x
+              </button> : <></>}
           </li>
         ))}
       </ul>

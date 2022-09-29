@@ -1,0 +1,38 @@
+.todos {
+  display: flex;
+  width: 60vw;
+  min-width: 350px;
+  flex-wrap: wrap;
+  list-style-type: none;
+  justify-content: center;
+  padding: 0px;
+}
+
+.todos li {
+  border: solid 3px black;
+  width: fit-content;
+  padding: 15px;
+  margin: 5px;
+  background-color: steelblue;
+}
+
+.todos input {
+  margin: 0 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container form label input {
+  margin: 0 5px;
+}
+
+.removeTodo {
+  position: relative;
+  top: 2px;
+  right: 2px;
+  width: 10px; 
+}

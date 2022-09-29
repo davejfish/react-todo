@@ -23,3 +23,12 @@ export async function updateTodo({ id, complete }) {
     .single();
   return checkError(response);
 }
+
+export async function deleteTodo(id) {
+  const response = await client
+    .from('todos')
+    .delete()
+    .match({ id })
+    .single();
+  return checkError(response);
+}
